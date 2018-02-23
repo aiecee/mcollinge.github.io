@@ -137,7 +137,7 @@ module.exports = ""
 /***/ "./src/app/components/monster-list/monster-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"columns is-multiline\">\n  <div class=\"column is-one-fifth\" *ngFor=\"let monster of (monsters | async)\">\n    <app-monster [monster]=monster></app-monster>\n  </div>\n</div>"
+module.exports = "<div class=\"columns is-multiline\">\n  <div class=\"column is-one-quarter\" *ngFor=\"let monster of (monsters | async)\">\n    <app-monster [monster]=monster></app-monster>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -193,7 +193,7 @@ module.exports = ""
 /***/ "./src/app/components/monster/monster.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\" (click)=\"onClick()\">\n  <div class=\"card-image\">\n    <figure class=\"image is-square\">\n      <img [src]=monster.img>\n    </figure>\n  </div>\n  <div class=\"card-content\">\n    <h5 class=\"title is-5\">\n      {{ monster.name }}\n    </h5>\n  </div>\n</div>"
+module.exports = "<div class=\"card\" (click)=\"onClick()\">\n  <div class=\"card-content\">\n    <div class=\"media\">\n      <div class=\"media-left\">\n        <figure class=\"image is-128x128\">\n          <img [src]=monster.img [alt]=monster.name>\n        </figure>\n      </div>\n      <div class=\"media-content\" style=\"overflow-y: hidden\">\n        <p class=\"title is-5\">{{ monster.name }}</p>\n        <p class=\"subtitle is-6\">{{ monster.type }}</p>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
