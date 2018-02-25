@@ -167,7 +167,7 @@ module.exports = ""
 /***/ "./src/app/components/monster-detail/monster-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tile is-ancestor\">\n  <div class=\"tile\">\n    <article class=\"tile is-child notification is-light\">\n      <p class=\"title\">{{ (monster | async)?.name }}</p>\n      <figure class=\"image is-square\">\n        <img [src]=\"(monster | async)?.img\">\n      </figure>\n    </article>\n  </div>\n  <div class=\"tile is-parent is-vertical\">\n    <article class=\"tile is-child notification is-primary\">\n      <p class=\"title\">Elemental</p>\n      <p class=\"subtitle\">Top tile</p>\n    </article>\n    <article class=\"tile is-child notification is-warning\">\n      <p class=\"title\">Ailments</p>\n      <p class=\"subtitle\">Bottom tile</p>\n    </article>\n  </div>\n</div>"
+module.exports = "<div class=\"tile is-ancestor\">\n  <div class=\"tile is-parent is-4\">\n    <article class=\"tile is-child notification is-light\">\n      <p class=\"title\">{{ (monster | async)?.name }}</p>\n      <p class=\"subtitle\">{{ (monster | async)?.type }}</p>\n      <figure class=\"image is-square\">\n        <img [src]=\"(monster | async)?.img\">\n      </figure>\n    </article>\n  </div>\n  <div class=\"tile\" *ngFor=\"let weakness of (monster | async)?.weaknesses\">\n    <div class=\"tile is-parent is-vertical\">\n      <article class=\"tile is-child notification is-light\">\n        <p class=\"title\">Elemental - {{ weakness.form }}</p>\n        <table class=\"table\">\n          <tbody>\n            <tr *ngFor=\"let state of weakness.elemental\">\n              <td>{{ state.name }}</td>\n              <td>\n                <span *ngFor=\"let i of range(state.value)\" class=\"icon has-text-warning\">\n                  <i class=\"fas fa-star\"></i>\n                </span>\n              </td>\n            </tr>\n          </tbody>\n        </table>\n      </article>\n      <article class=\"tile is-child notification is-light\">\n        <p class=\"title\">Ailments - {{ weakness.form }}</p>\n        <table class=\"table\">\n          <tbody>\n            <tr *ngFor=\"let state of weakness.ailments\">\n              <td>{{ state.name }}</td>\n              <td>\n                <span *ngFor=\"let i of range(state.value)\" class=\"icon has-text-warning\">\n                  <i class=\"fas fa-star\"></i>\n                </span>\n              </td>\n            </tr>\n          </tbody>\n        </table>\n      </article>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -180,7 +180,9 @@ module.exports = "<div class=\"tile is-ancestor\">\n  <div class=\"tile\">\n    
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_switchMap__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/switchMap.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngrx_store__ = __webpack_require__("./node_modules/@ngrx/store/@ngrx/store.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store__ = __webpack_require__("./src/app/store/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store__ = __webpack_require__("./src/app/store/index.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -196,6 +198,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MonsterDetailComponent = (function () {
     function MonsterDetailComponent(route, router, store) {
         this.route = route;
@@ -204,10 +207,13 @@ var MonsterDetailComponent = (function () {
     }
     MonsterDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.monster = this.store.select(__WEBPACK_IMPORTED_MODULE_4__store__["d" /* monsterDetailMonster */]);
+        this.monster = this.store.select(__WEBPACK_IMPORTED_MODULE_5__store__["d" /* monsterDetailMonster */]);
         this.route.paramMap.subscribe(function (params) {
-            _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_4__store__["a" /* GetMonsterById */](parseInt(params.get("id"))));
+            _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_5__store__["a" /* GetMonsterById */](parseInt(params.get("id"))));
         });
+    };
+    MonsterDetailComponent.prototype.range = function (length) {
+        return __WEBPACK_IMPORTED_MODULE_4_lodash__["range"](length);
     };
     MonsterDetailComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
