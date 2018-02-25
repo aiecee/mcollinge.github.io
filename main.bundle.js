@@ -27,7 +27,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"hero is-light\">\r\n  <div class=\"hero-body\">\r\n    <div class=\"container\">\r\n      <h1 class=\"title\">\r\n        MHW Reference\r\n      </h1>\r\n      <h2 class=\"subtitle\">\r\n        MHW weakness and classification quick reference\r\n      </h2>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"section\">\r\n  <div class=\"container\">\r\n    <!--<app-monster-list></app-monster-list>-->\r\n    <router-outlet></router-outlet>\r\n  </div>\r\n</section>"
+module.exports = "<section class=\"hero is-dark\">\r\n  <div class=\"hero-body\">\r\n    <div class=\"container\">\r\n      <h1 class=\"title\">\r\n        MHW Reference\r\n      </h1>\r\n      <h2 class=\"subtitle\">\r\n        MHW weakness and classification quick reference\r\n      </h2>\r\n    </div>\r\n  </div>\r\n</section>\r\n<section class=\"section\">\r\n  <div class=\"container\">\r\n    <router-outlet></router-outlet>\r\n  </div>\r\n</section>"
 
 /***/ }),
 
@@ -144,7 +144,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_3__ngrx_store__["d" /* StoreModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__store__["f" /* reducers */]),
                 __WEBPACK_IMPORTED_MODULE_4__ngrx_effects__["c" /* EffectsModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__store__["c" /* effects */]),
-                __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* RouterModule */].forRoot(routes /*, {enableTracing: true}*/)
+                __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* RouterModule */].forRoot(routes, { useHash: true })
             ],
             providers: __WEBPACK_IMPORTED_MODULE_7__services__["a" /* services */].slice(),
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
@@ -167,7 +167,7 @@ module.exports = ""
 /***/ "./src/app/components/monster-detail/monster-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  Yes {{ (monster | async)?.name }}\n</p>"
+module.exports = "<div class=\"tile is-ancestor\">\n  <div class=\"tile\">\n    <article class=\"tile is-child notification is-light\">\n      <p class=\"title\">{{ (monster | async)?.name }}</p>\n      <figure class=\"image is-square\">\n        <img [src]=\"(monster | async)?.img\">\n      </figure>\n    </article>\n  </div>\n  <div class=\"tile is-parent is-vertical\">\n    <article class=\"tile is-child notification is-primary\">\n      <p class=\"title\">Elemental</p>\n      <p class=\"subtitle\">Top tile</p>\n    </article>\n    <article class=\"tile is-child notification is-warning\">\n      <p class=\"title\">Ailments</p>\n      <p class=\"subtitle\">Bottom tile</p>\n    </article>\n  </div>\n</div>"
 
 /***/ }),
 
